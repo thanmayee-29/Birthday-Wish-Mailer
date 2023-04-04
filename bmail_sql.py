@@ -8,8 +8,8 @@ from urllib.request import urlopen
 import pymysql
 
 # Connect to the database
-conn = pymysql.connect(host='localhost', user='root',
-                       password='', db='mailer')
+conn = pymysql.connect(host='containers-us-west-168.railway.app', user='root',
+                       password='errFQnflZtsv2zRTtlud', db='railway')
 cur = conn.cursor()
 
 # Query the data you need from the database and store it in a pandas DataFrame
