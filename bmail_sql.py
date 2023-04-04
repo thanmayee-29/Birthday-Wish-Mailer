@@ -8,8 +8,8 @@ from urllib.request import urlopen
 import pymysql
 
 # Connect to the database
-conn = pymysql.connect(host='containers-us-west-168.railway.app', user='root',
-                       password='errFQnflZtsv2zRTtlud', db='railway')
+conn = pymysql.connect(host='localhost', user='root',
+                       password='', db='birthdays')
 cur = conn.cursor()
 
 # Query the data you need from the database and store it in a pandas DataFrame
@@ -23,7 +23,7 @@ today_bdays = df[df['birthday'].dt.date == today]
 msg = MIMEMultipart()
 server = smtplib.SMTP('smtp.gmail.com', 587)
 server.starttls()
-server.login('janapareddythanmayee29@gmail.com', 'ygqyjjuntjqlbjkt')
+server.login('gmail', 'api password')
 
 for index, row in today_bdays.iterrows():
     name = row['name']
@@ -39,8 +39,8 @@ for index, row in today_bdays.iterrows():
     msg.attach(body)
 
     msg['Subject'] = 'Look who\'s shining on their glorious day!!'
-    msg['From'] = 'janapareddythanmayee29@gmail.com'
+    msg['From'] = 'gmail'
     msg['To'] = email
-    server.sendmail('janapareddythanmayee29@gmail.com', email, msg.as_string())
+    server.sendmail('gmail', email, msg.as_string())
 
 server.quit()
